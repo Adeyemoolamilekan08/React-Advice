@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/React-Advice/static/css/main.c612221a.css",
+    "main.js": "/React-Advice/static/js/main.b1414c75.js",
+    "index.html": "/React-Advice/index.html",
+    "main.c612221a.css.map": "/React-Advice/static/css/main.c612221a.css.map",
+    "main.b1414c75.js.map": "/React-Advice/static/js/main.b1414c75.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c612221a.css",
+    "static/js/main.b1414c75.js"
+  ]
+}
