@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./styles.css";
 
-function App() {
+export default function App() {
+  const [advice, setAdvice] = useState("");
+  const [count, setCount] = useState(0);
+  async function getAdvice() {
+    const res = await fetch("https://api.adviceslip.com/advice");
+    const data = await res.json();
+    setAdvice(data.slip.advice);
+    setCount((c) => c + 1);
+  }
+  useEffect(function () {
+    getAdvice();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app-container">
+
+      <h3 className="advice-app">React Advice App Using Api</h3>
+
+  
+      <h1 id="advice-text">{advice}</h1>
+   
+
+      <button id="get-started-button" onClick={getAdvice}>
+        Get Started
+      </button>
+      <Message count={count} />
     </div>
   );
 }
-
-export default App;
+function Message(props) {
+  return (
+    <p id="message">
+      You have read <strong>{props.count}</strong> Pieces of Advice
+    </p>
+  );
+}
